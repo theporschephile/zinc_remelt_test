@@ -9,13 +9,17 @@
   % max_layers, (#)
   % finish_time, (s)
 
- prompt = {'Density (kg/m^3):' , 'Thermal Conductivity (W/K*m^2):' ,...
-     'Specific heat capacity (J/K*kg):' , 'Layer height (mm):' , 'Time step (s):'...
-     'Air-Metal Convection coefficient (W/K*m^2):' ,...
-     'Metal-Base Convection coefficient (W/K*m^2):'};
- dlgtitle = 'Inputs';
- dims = [1 75];
- answer = inputdlg(prompt , dlgtitle , dims)
+density_kg_m3 = 8100;
+
+%%%%
+
+prompt = {'Density (kg/m^3):' , 'Thermal Conductivity (W/K*m^2):' ,...
+    'Specific heat capacity (J/K*kg):' , 'Layer height (mm):' , 'Time step (s):'...
+    'Air-Metal Convection coefficient (W/K*m^2):' ,...
+    'Metal-Base Convection coefficient (W/K*m^2):'};
+dlgtitle = 'Inputs';
+dims = [1 75];
+user_inputs = inputdlg(prompt, dlgtitle, dims);
   
 % set up mesh
   % create an array of zeroes of columns max_layers and rows finish_time/dt
