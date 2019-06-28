@@ -9,21 +9,31 @@
   % max_layers, (#)
   % finish_time, (s)
 
-density_kg_m3 = 8100;
+rho = 7140;
+k = 120;
+c_p = 0.39;
+dz = 0.0002;
+dt = 1;
+h_am = 113;
+h_mb = 50;
+max_layers = 6;
+finish_time = 120;
 
-%%%%
 
-prompt = {'Density (kg/m^3):' , 'Thermal Conductivity (W/K*m^2):' ,...
-    'Specific heat capacity (J/K*kg):' , 'Layer height (mm):' , 'Time step (s):'...
-    'Air-Metal Convection coefficient (W/K*m^2):' ,...
-    'Metal-Base Convection coefficient (W/K*m^2):'};
-dlgtitle = 'Inputs';
-dims = [1 75];
-user_inputs = inputdlg(prompt, dlgtitle, dims);
+%prompt = {'Density (kg/m^3):' , 'Thermal Conductivity (W/K*m^2):' ,...
+%    'Specific heat capacity (J/K*kg):' , 'Layer height (mm):' , 'Time step (s):'...
+%    'Air-Metal Convection coefficient (W/K*m^2):' ,...
+%    'Metal-Base Convection coefficient (W/K*m^2):'};
+%dlgtitle = 'Inputs';
+%dims = [1 75];
+%user_inputs = inputdlg(prompt , dlgtitle , dims);
   
 % set up mesh
   % create an array of zeroes of columns max_layers and rows finish_time/dt
 
+mesh = zeros(finish_time/dt,max_layers);
+
+  
 % solve problem
   % loop over time steps, j
     % solve PDE in current loop
